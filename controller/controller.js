@@ -1,16 +1,16 @@
 const express = require ('express')
 const router = express.Router();
 	
-const posts = require('../controllers/controller');
+const posts = require('../posts/posts');
 
 
 
 router.get("/", (req,res)=>{
   let filteredPosts = posts;
 
-  if (req.query.id){
+  if (req.query.tags){
     filteredPosts =posts.filter(
-      post => post.title.includes(req.query.title)
+      post => post.tags.includes(req.query.tags)
     );
   }
   

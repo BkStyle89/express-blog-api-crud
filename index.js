@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
-const postRouter = require('./routers/posts')
+const postRouter = require('./controller/controller')
 
 // Serve static assets
 app.use('/images', express.static('public/images'));
@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   res.send('Server del mio blog');
 });
 
-app.use("/posts", postRouter)
+app.use("/controller", postRouter)
 
 
 
