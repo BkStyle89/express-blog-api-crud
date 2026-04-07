@@ -12,13 +12,14 @@ router.get("/", (req,res)=>{
     filteredPosts =posts.filter(
       post => post.tags.includes(req.query.tags)
     );
+    res.json(filteredPosts);
+  }else{
+    res.status(404).json({message: "tag not foud"})
   }
   
-  res.json(filteredPosts);
   
 
 });
-
 
 
 router.get ("/:id", (req,res)=>{
@@ -35,7 +36,6 @@ console.log(req.params.id);
 
 router.post ("/",(req,res)=>{
   res.send("creazione nuovo post");
-    const newPost = posts.push(posts.index)
     console.log(newPost);
     
 });
