@@ -6,12 +6,14 @@ const postRouter = require('./controller/controller')
 // Serve static assets
 app.use('/images', express.static('public/images'));
 
+app.use(express.json());
+
 // Base route
 app.get('/', (req, res) => {
   res.send('Server del mio blog');
 });
 
-app.use("/controller", postRouter)
+app.use("/post", postRouter)
 
 
 
