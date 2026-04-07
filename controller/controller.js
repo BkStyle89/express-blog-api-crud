@@ -49,10 +49,27 @@ router.patch("/:id",(req,res)=>{
 });
 
 router.delete("/:id",(req,res)=>{
-/* const deletedPost = posts.splice(posts.id); */
-res.send(`elimina un post${req.params.id}`);
+
+  const id= parseInt(req.params.id)
+
+  const post = posts.find(post => post.id ===id)
+
+  if (!post){
+    res.status(404);
+    
+    return res.json({
+      status: 404,
+      error: "not found",
+      message: "post non trovato"
+    })
+  }
+
+  posts.splice(posts.indexOf(post), 1);
+
+res.sendStatus(204);
     
 });
+
 
 
 
