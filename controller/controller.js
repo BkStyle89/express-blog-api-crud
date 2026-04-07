@@ -14,7 +14,7 @@ router.get("/", (req,res)=>{
     );
     res.json(filteredPosts);
   }else{
-    res.status(404).json({message: "tag not foud"})
+    res.json(posts)
   }
   
   
