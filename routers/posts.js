@@ -8,9 +8,9 @@ const posts = require('../controllers/controller');
 router.get("/", (req,res)=>{
   let filteredPosts = posts;
 
-  if (req.params.id){
+  if (req.query.id){
     filteredPosts =posts.filter(
-      post => post.id.includes(req.params.id)
+      post => post.title.includes(req.query.title)
     );
   }
   
