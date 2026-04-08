@@ -81,7 +81,26 @@ router.put("/:id",(req,res)=>{
 });
 
 router.patch("/:id",(req,res)=>{
-  res.send(`modifica parziale del post ${req.params.id}`);
+   const id = parseInt(req.params.id)
+
+  const post = posts.find(post => post.id === id);
+
+  if (!post){
+    res.status(404)
+
+    return res.json({
+      error: "Not Found",
+      message: "Post non trovato"
+    })
+  }
+
+  post.title =req.body.title;
+  post.content =req.body.content;
+
+  console.log(posts);
+  
+
+  res.json(post);
 });
 
 router.delete("/:id",(req,res)=>{
