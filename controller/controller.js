@@ -17,7 +17,6 @@ router.get("/", (req,res)=>{
     res.json(posts)
   }
   
-  
 
 });
 
@@ -35,8 +34,24 @@ console.log(req.params.id);
 });
 
 router.post ("/",(req,res)=>{
-  res.send("creazione nuovo post");
-    console.log(newPost);
+  const newId = posts[posts.length - 1].id + 1;
+
+
+  const {title,content,image,tags} = req.body;
+
+  const newPost ={
+    id: newId,
+    title: req.body.title,
+    content: req.body.content,
+    image: req.body.image,
+    tags: [req.body.tags]
+  }
+
+  posts.push (newPost)
+  console.log(posts);
+  
+  res.status(201)
+  res.json("newPost");
     
 });
 
@@ -69,9 +84,6 @@ router.delete("/:id",(req,res)=>{
 res.sendStatus(204);
     
 });
-
-
-
 
 
 module.exports =router;
