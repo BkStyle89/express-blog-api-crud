@@ -1,4 +1,4 @@
- function logTime(req,res,next){
+ function checkTime(req,res,next){
     
   console.log("i got your request");
 
@@ -9,4 +9,4 @@ console.log('time');
   
 }
 
-module.exports = checktime
+module.exports = checkTime

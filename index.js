@@ -3,23 +3,16 @@ const app = express();
 const PORT = 3000;
 const postRouter = require('./controller/controller')
 const checkTime = require('./middlewares/checkTime.js')
+const error500 = require ('./middlewares/error500.js')
 
 // Serve static assets
 app.use('/images', express.static('public/images'));
 
 app.use(express.json());
 
-/* function logTime(req,res,next){
-  console.log("i got your request");
-
-console.log('time');
+app.use(error500);
 
 
-  next();
-  
-}
-
-app.use(logTime); */
 
 app.use('posts',checkTime);
 
